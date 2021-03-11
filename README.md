@@ -1,27 +1,71 @@
-# Hackathon
+## 1er paso
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.3.
+ejecuta estos comandos 
 
-## Development server
+```
+npm i ng-tailwindcss -g
+npm i tailwindcss -D
+npx tailwind init # use --full, if you want to see all the defaults in your tailwind.config.js
+ngtw configure
+touch src/tailwind.css
+```
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Agrega el siguiente contenido en el archivo `src/tailwind.css`
 
-## Code scaffolding
+```
+@tailwind base;
+@tailwind utilities;
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+@screen sm {
+  .sm\:grid { display: grid !important; }
+}
 
-## Build
+@screen md {
+  .md\:grid { display: grid !important; }
+}
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+@screen lg {
+  .lg\:grid { display: grid !important; }
+}
 
-## Running unit tests
+@screen xl {
+  .xl\:grid { display: grid !important; }
+}
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+crea igualmente un archivo llamado `ng-tailwind.js` y dentro del el copia lo siguiente
 
-## Running end-to-end tests
+```
+module.exports = {
+  // Tailwind Paths
+  configJS: './tailwind.config.js',
+  sourceCSS: './src/tailwind.css',
+  outputCSS: './src/styles.css',
+  watchRelatedFiles: [],
+  // Sass
+  sass: true,
+  // PurgeCSS Settings
+  purge: false,
+  keyframes: false,
+  fontFace: false,
+  rejected: false,
+  whitelist: ['dynamically-generated-class'], // Problem solved
+  whitelistPatterns: [], // overkill, but also works
+  whitelistPatternsChildren: [],
+  extensions: ['.ts', '.html', '.js'],
+  content: []
+} 
+```
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+## 2do paso
 
-## Further help
+Ingresa a la siguiente [pagina](https://tailwind.ink/) para generar rapidamente los colores que utilizaremos en la app
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## 3er paso
+
+modifica tu package.json agregando el comando `prestart` este comando se ejecuta antes del start, y nos ayudara para hacer un build de los estilos de tailwind
+```
+    "prestart": "ngtw build --purge",
+    "start": "ng serve && ngtw watch",
+```

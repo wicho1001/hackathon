@@ -5,14 +5,14 @@ module.exports = {
   outputCSS: './src/styles.css',
   watchRelatedFiles: [],
   // Sass
-  sass: false,
+  sass: true,
   // PurgeCSS Settings
   purge: false,
   keyframes: false,
   fontFace: false,
   rejected: false,
   whitelist: ['dynamically-generated-class'], // Problem solved
-  whitelistPatterns: [/dynamically/, /generated/, /class/], // overkill, but also works
+  whitelistPatterns: [], // overkill, but also works
   whitelistPatternsChildren: [],
   extensions: ['.ts', '.html', '.js'],
   content: []

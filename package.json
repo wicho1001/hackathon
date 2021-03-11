@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "prestart": "ngtw build --purge",
-    "start": "ng serve",
+    "start": "ng serve && ngtw watch",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
