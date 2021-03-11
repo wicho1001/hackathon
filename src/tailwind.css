@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900|Rubik:300,400,500,700,900|Overpass+Mono:300,400,600&display=swap');
+
+@tailwind base;
+
+:root { --grid-gap: 15px; }
+.grid-container { display: grid; grid-gap: var(--grid-gap); }
+.grid { display: grid !important; }
+
+.h-container {
+  height: calc(100vh - theme('margin.header'));
+}
+
+@tailwind utilities;
+
+
+@screen sm {
+  .sm\:grid { display: grid !important; }
+}
+
+@screen md {
+  .md\:grid { display: grid !important; }
+}
+
+@screen lg {
+  .lg\:grid { display: grid !important; }
+}
+
+@screen xl {
+  .xl\:grid { display: grid !important; }
+}
